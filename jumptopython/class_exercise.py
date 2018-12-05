@@ -11,6 +11,7 @@ class Person_name:
 
 newname = Person_name("Jane","Kim")
 myPerson1 = Person(newname, "dark brown", 21)
+#이름을 스트링으로 바로 넣어줄 수도 있겠지만, 다른 클래스의 인스턴스를 인수로 넣어줄 수 있다. 
 
 myPerson2 = Person(Person_name("Sally", "Park"), "dark brown", 21)
 #Person 클래스의 생성자로 Pereson_name의 인스턴스를 곧바로 넘겨버릴 수 있다. 
