@@ -1,13 +1,29 @@
+import unittest
+
 def findnum(list, num):
     n = len(list)
     result = []
     for i in range(n):
         if list[i] == num:
             result.append(i)
-    return result    
-        
-testlist = [23,54,64,23]
-#print(findnum(testlist,23))
+        yield result
+    yield result    
+
+class TestFindNum(unittest.TestCase):
+    def test_1(self):
+        a = [23, 54, 64, 23]
+
+        itr = findnum(a, 23)
+
+        self.assertEqual(next(itr), [0])
+        self.assertEqual(next(itr), [0])
+        self.assertEqual(next(itr), [0])
+        self.assertEqual(next(itr),[0,3])
+
+        self.assertEqual(next(itr),[0,3])
+
+        with self.assertRaises(StopIteration):
+            next(itr)
 
 def findname(numlist, namelist, studentnum):
     n = len(numlist)
@@ -33,12 +49,26 @@ def selectionsort(list):
                 minindex = j
         # do swap!
         list[i], list[minindex] = list[minindex], list[i]
-        print("swap {} with {}".format(i, minindex))
-        print(list)
+        yield list
+        # print("swap {} with {}".format(i, minindex))
+        # print(list)
+    yield list
             
+class TestSelectionSort(unittest.TestCase):
+    def test_1(self):
+        a = [35, 24, 11, 5]
 
-a = [35, 24, 11, 5]
+        itr = selectionsort(a)
+        # sort iterations
+        self.assertEqual(next(itr), [5, 24, 11, 35])
+        self.assertEqual(next(itr), [5, 11, 24, 35])
+        self.assertEqual(next(itr), [5, 11, 24, 35])
 
-print(a)
-selectionsort(a)
+        # result
+        self.assertEqual(next(itr), [5, 11, 24, 35])
+        # 
+        with self.assertRaises(StopIteration):
+            next(itr)
 
+if __name__ == '__main__':
+        unittest.main()
