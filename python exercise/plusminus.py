@@ -18,7 +18,7 @@ def plusMinus(arr):
             dicforratio["minus"] += 1
         else:
             dicforratio["zero"] += 1           
-    for value in dicforratio.values(): # 이 부분에서 꽤 시간을 허비했는데, 처음엔 map과 lambda와 round를 쓰려고 했다가, 결과값이 정수일경우 소수점 아래 여섯번째까지 보여주질 않아서 고민했다. 어쨌든 문제에서는 print되기만을 요구하고 있으므로 결과값이 반드시 숫자여야만 하는 것은 아니기에, format함수를 이용하여 처리하였다.
+    for value in dicforratio.values(): # 이 부분에서 꽤 시간을 허비했는데, 처음엔 map을 잘 알지도 못하면서 map과 lambda와 round를 쓰려고 했다가, 결과값이 정수일경우 소수점 아래 여섯번째까지 보여주질 않아서 고민했다. 어쨌든 문제에서는 print되기만을 요구하고 있으므로 결과값이 반드시 숫자여야만 하는 것은 아니기에, format함수를 이용하여 처리하였다.
         print("{0:0.6f}".format(value/len(arr)))           
 
 if __name__ == '__main__':
