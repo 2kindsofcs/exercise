@@ -8,16 +8,11 @@ import re
 import sys
 
 # Complete the staircase function below.
-def staircase(n):
-    string = "#"
-    for i in range (1,n):
-        if n == 1:
-            break
-        else:    
-            print(" " * (n-i) + string)
-            string += "#"
-    print(string)
-    return
+
+# "#"과 공백의 총합은 언제나 n개이다. 또한 "#"이라는 스트링을 별도로 가공할 필요가 없으므로, 굳이 변수를 선언하지 않아도 된다.
+def staircase(n): 
+    for i in range (1,n+1):
+        print(" " * (n-i) + "#" * i) 
 
 if __name__ == '__main__':
     n = int(input())
