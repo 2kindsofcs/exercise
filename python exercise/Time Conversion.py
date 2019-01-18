@@ -3,17 +3,20 @@
 import os
 import sys
 
+# 선생님이 보너스(?)로 만약 자기라면 이렇게 더 고칠 거라고 하셨다. 
+# hour을 처음부터 정수로 만들고 후반부에 format함수로 깔끔하게 정리하는 것.
 
 def timeConversion(s):
-	hour = s[:2]
-	am_pm = s[-2:]
+	hour = int(s[:2])
+	is_am = s[-2:] == "AM"
 	min_sec = s[2:-2]
 
-	if am_pm == "AM" and hour == "12":
-		hour = "00"
-	elif am_pm == "PM" and hour != "12":
-		hour = str(int(hour) + 12)
-	return hour + min_sec
+	if is_am and hour == 12:
+		hour = 0
+	elif not is_am and hour != 12:
+		hour = hour + 12
+	return "{0:02}".format(hour) + min_sec
+
 
 # AM and 12? -> hour=00 +minsec
 # PM and not 12 -> hour+12  + minsec
