@@ -8,6 +8,8 @@ import sys
 
 def timeConversion(s):
 	hour = int(s[:2])
+	# 혹시라도 계산을 여러 번 하게 될 경우(and/or 비교에 시간이 많이 걸릴 경우)
+	# 이렇게 boolean으로 미리 처리해두면 계산 속도를 크게 향상시킬 수 있다.
 	is_am = s[-2:] == "AM"
 	min_sec = s[2:-2]
 
