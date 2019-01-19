@@ -20,3 +20,11 @@ myPerson2 = Person(Person_name("Sally", "Park"), "dark brown", 21)
 print(myPerson1.name) # <__main__.Person_name object at 메모리주소>
 print(myPerson1.name.firstname) # Jane
 print(myPerson2.name.firstname) # Sally
+
+def capitalizeName(name): #name을 인자로 받을 경우 name 하위에 있는 객체변수에 접근할 수 있으므로 예상하는 대로 upper 함수를 쓸 수 있다.
+    name.firstname = name.firstname.upper()
+    name.lastname = name.lastname.upper()
+
+capitalizeName(myPerson1.name) 
+print(myPerson1.name.firstname)
+print(myPerson1.name.lastname)
