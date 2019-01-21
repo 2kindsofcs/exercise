@@ -9,10 +9,9 @@ import sys
 
 # Complete the matchingStrings function below.
 def matchingStrings(strings, queries):
-    result = {}
-    for query in queries:
-        result[query] = strings.count(query)
-    return [result[query] for query in queries]
+    return [strings.count(query) for query in queries]
+    # 조금만 더 생각하면, list comprehension에는 식이 들어갈 수 있으므로 계산한 식으로 바로 끝낼 수 있으면
+    # 굳이 중간 변수를 넣을 필요는 없다. 
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
