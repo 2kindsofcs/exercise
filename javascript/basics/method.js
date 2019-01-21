@@ -23,7 +23,7 @@ console.log(restaurant.checkAvailability(4))
 // 내장 메소드 사용하기 
 
 let isValidPassword = function (password) { 
-    if (password.length > 8 && password.includes('password') === false){
+    if (password.length > 8 && !password.includes('password')){ // ===false 대신 앞에 ! 붙여서 보다 간결하게
         return true
     }
     else {
