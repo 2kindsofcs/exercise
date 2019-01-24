@@ -1,5 +1,27 @@
 let todo = ['lunch', 'reading', 'exercise', 'yoga', 'brewing'];
 
+let objectConverter = function(list) {
+    let result = []
+    for (count = 0; count < list.length; count++){
+        let value = {job: list[count], done: false}
+        result.push(value)
+    }
+    return result
+}
+todo = objectConverter(todo);
+
+let deleteTodo = function(list, valuetodelete) {
+    let index = list.findIndex(function(element) {
+        return valuetodelete.toLowerCase() === element.job.toLowerCase()  
+    })
+    if (index > -1) // 만약 찾는 값이 todo 리스트 안에 확실히 있었을 경우. (찾지 못했다면 -1을 반환했을테니)
+    list.splice(index, 1);
+}
+
+console.log(todo);
+deleteTodo(todo,'lunch');
+console.log(todo);
+
 // todo.splice(2,1);
 // todo.push("drink coffee");
 // todo.shift();
@@ -13,6 +35,6 @@ let todo = ['lunch', 'reading', 'exercise', 'yoga', 'brewing'];
 //     console.log(`${num}.${item}`)
 // })
 
-for (let count = 0; count < todo.length; count++){
-    console.log(`${count + 1}. ${todo[count]}`)
-}
+// for (let count = 0; count < todo.length; count++){
+//     console.log(`${count + 1}. ${todo[count]}`)
+// }
