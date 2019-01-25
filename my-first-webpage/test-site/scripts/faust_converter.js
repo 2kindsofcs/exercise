@@ -1,50 +1,47 @@
-let randomNumber = Math.floor(Math.random() * 100) + 1;
-const guesses = document.querySelector('.guesses');
-const lastResult = document.querySelector('.lastResult');
-const lowOrHi = document.querySelector('.lowOrHi');
-const 술양Submit = document.querySelector('.술양Submit');
-const guessField소주잔 = document.querySelector('.guessField소주잔');
-const 소주도수 = 17
-const 파우스트알콜양 = ((30 * 0.4) + (30 * 0.755) + (15 * 0.2))
-// let guessCount = 1;
+const conversion_result = document.querySelector('.conversion_result');
+const message = document.querySelector('.lastResult');
+const submit = document.querySelector('.submit');
+const input_sojuG = document.querySelector('.input_sojuG');
+const input_sojuB = document.querySelector('.input_sojuB');
+const soju_ABV = 17
+const faust_al = ((30 * 0.4) + (30 * 0.755) + (15 * 0.2))
 let resetButton;
+
 function alcoholCal() {
-  if (Number(guessField소주잔.value) >=0 && Number(guessfield소주병.value) >= 0){
-    let 소주잔술양 = Number(guessField소주잔.value) * 50
-    let 소주병술양 = Number(guessfiled소주병.value) * 360
-    let 파우스트환산값 = ((소주잔술양 + 소주병술양) * 소주도수 * 0.01) / 파우스트알콜양
+  if (Number(input_sojuG.value) >=0 && Number(input_sojuB.value) >= 0){
+    let soju_G_volume = Number(input_sojuG.value) * 50
+    let soju_B_volume = Number(input_sojuB.value) * 360
+    let result_faust = ((soju_G_volume + soju_B_volume) * soju_ABV * 0.01) / faust_al
   }
-  guesses결과.textContent = `계산 결과: 파우스트 약 ${파우스트환산값.toFixed(1)}잔을 드신 것과 같습니다.`;
+  conversion_result.textContent = `계산 결과: 파우스트 약 ${result_faust.toFixed(1)}잔을 드신 것과 같습니다.`;
 
   if (파우스트환산값 >= 4) {
-    lastResult조언.textContent = '당신의 간, 괜찮으십니까?';
-    lastResult.style.backgroundColor = 'red';
-    lowOrHi.textContent = '';
+    message.textContent = '당신의 간, 괜찮으십니까?';
+    message.style.backgroundColor = 'red';
+    // lowOrHi.textContent = '';
 
-  set계산완료();
+  blockSubmit();
   }
 }
-guessSubmit.addEventListener('click', alcoholCal);
+submit.addEventListener('click', alcoholCal);
 
-function set계산완료() {
-  guessField.disabled = true;
-  guessSubmit.disabled = true;
+function blockSubmit() {
+  input_sojuG.disabled = true;
+  submit.disabled = true;
   resetButton = document.createElement('button');
-  resetButton.textContent = 'Start new game';
+  resetButton.textContent = '다시 계산하기';
   document.body.appendChild(resetButton);
-  resetButton.addEventListener('click', reset계산);
+  resetButton.addEventListener('click', reset);
 }
-function reset계산() {
-  guessCount = 1;
+function reset() {
   const resetParas = document.querySelectorAll('.resultParas p');
   for(let i = 0 ; i < resetParas.length ; i++) {
     resetParas[i].textContent = '';
   }
-  resetButton.parentNode.removeChild(resetButton);
-  guessField.disabled = false;
-  guessSubmit.disabled = false;
-  guessField.value = '';
-  guessField.focus();
-  lastResult.style.backgroundColor = 'white';
-  randomNumber = Math.floor(Math.random() * 100) + 1;
+  resetButton.parentNode.removeChild(resetButton); //document.body를 써도 똑같이 작용하나? 왜 parentNode를 쓰지?
+  input_sojuG.disabled = false;
+  submit.disabled = false;
+  input_sojuG.value = '';
+  input_sojuG.focus();
+  input_sojuG.focus();
 }
