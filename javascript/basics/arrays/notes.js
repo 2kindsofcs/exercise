@@ -22,6 +22,16 @@ const findNote = function (notes, noteTitle) {
     })
 }
 
+const findNotes = function(notes, query) {
+    return notes.filter(function (note){
+        const isTitleMatch = note.title.toLowerCase().includes(query.toLocaleLowerCase());
+        const isBodyMatch = note.body.toLocaleLowerCase().includes(query.toLocaleLowerCase());
+        return isTitleMatch || isBodyMatch
+    })
+}
+
+console.log(filterNotes)
+
 const note = findNote(notes, 'My next trip')
 console.log(note)
 

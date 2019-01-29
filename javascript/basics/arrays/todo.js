@@ -9,18 +9,27 @@ let objectConverter = function(list) {
     return result
 }
 todo = objectConverter(todo);
+todo[3].done = true;
 
-let deleteTodo = function(list, valuetodelete) {
-    let index = list.findIndex(function(element) {
-        return valuetodelete.toLowerCase() === element.job.toLowerCase()  
+const getThingsToDo = function(list) {
+    return list.filter(function (element) {
+        return element.done === false
     })
-    if (index > -1) // 만약 찾는 값이 todo 리스트 안에 확실히 있었을 경우. (찾지 못했다면 -1을 반환했을테니)
-    list.splice(index, 1);
 }
+console.log(todo)
+console.log(getThingsToDo(todo))
 
-console.log(todo);
-deleteTodo(todo,'lunch');
-console.log(todo);
+// let deleteTodo = function(list, valuetodelete) {
+//     let index = list.findIndex(function(element) {
+//         return valuetodelete.toLowerCase() === element.job.toLowerCase()  
+//     })
+//     if (index > -1) // 만약 찾는 값이 todo 리스트 안에 확실히 있었을 경우. (찾지 못했다면 -1을 반환했을테니)
+//     list.splice(index, 1);
+// }
+
+// console.log(todo);
+// deleteTodo(todo,'lunch');
+// console.log(todo);
 
 // todo.splice(2,1);
 // todo.push("drink coffee");
