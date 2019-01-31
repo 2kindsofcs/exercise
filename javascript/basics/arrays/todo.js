@@ -16,8 +16,21 @@ const getThingsToDo = function(list) {
         return !element.done // element.done === false보다 직관적이므로 훨씬 가독성이 좋다.  
     })
 }
-console.log(todo)
-console.log(getThingsToDo(todo))
+// console.log(todo)
+// console.log(getThingsToDo(todo))
+
+const sortTodo = function (todo) {
+    todo.sort(function (a,b) {
+        if (a.done > b.done) {
+            return 1
+        } else if (a.done < b.done){
+            return -1
+        }
+    })
+}
+
+sortTodo(todo);
+console.log(todo);
 
 // let deleteTodo = function(list, valuetodelete) {
 //     let index = list.findIndex(function(element) {
