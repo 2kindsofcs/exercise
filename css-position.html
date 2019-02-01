@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF=8">
+    <title>CSS Position</title>
+    <style>
+    .container {
+        border: 3px solid black;
+        width: 500px;
+        height: 500px;
+        position: relative;
+    }
+    #static {
+        border: 3px solid red;
+        position: static;
+    }
+    #relative {
+        border: 3px solid green;
+        position: relative;
+        top: 30px;
+        left: 30px;
+    }
+    #absolute {
+        border: 3px solid blue;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+    </style>
+</head>
+<body>
+    <h1>position 지정 방식에 따른 위치 차이</h1>
+    <div class="container">
+    <p id=static>static</p>
+    <p id=relative>relative</p>
+    <p id=absolute>absolute</p>
+    </div>
+</body>
+</html>
