@@ -1,8 +1,10 @@
+DPlist = [0, 1]
 def fibo(n):
-    if n <= 1:
-        return n
+    if n <= len(DPlist) - 1:
+        return DPlist[n]
     else:
-        return fibo(n-2) + fibo(n-1)
+        DPlist.append(fibo(n-2) + fibo(n-1))
+        return DPlist[n]
 
 def zeroAndOne(n):
     if n == 0 :
