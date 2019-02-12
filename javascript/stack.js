@@ -1,4 +1,4 @@
-class Stack {
+export class stack {
     constructor() {
         this.dataStore = [];
         this.top = -1;
@@ -25,11 +25,7 @@ class Stack {
     }
 }
 
-let testStack = new Stack();
-for (let i=0; i<5; i++) {
-    testStack.push(i)
-}
-console.log(testStack.peek());
-console.log(testStack.dataStore);
-console.log(testStack.pop());
-console.log(testStack.dataStore);
+/**
+ * @param {String} string 
+ */
+
