@@ -1,0 +1,14 @@
+# https://www.hackerrank.com/challenges/strange-advertising/problem
+
+totalNumLike = [2]
+
+def viralAdvertising(n):
+    totalNumLikeLen = len(totalNumLike)
+    if n <= totalNumLikeLen:
+        return totalNumLike[n-1]
+    for i in range(totalNumLikeLen-1, n-1):
+        totalNum = math.floor(totalNumLike[i] * 3 / 2)
+        totalNumLike.append(totalNum)
+    return sum(totalNumLike)
+
+# 이게 진짜 최선인가..? 더 이해하기 쉽고 깔끔하게 짤 수 있을 것 같은데. 
