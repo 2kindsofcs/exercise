@@ -5,14 +5,8 @@ import math
 def idealTaxi(s):
     answer = 0
     s.sort()
-    count1 = s.count(1)
-    count2 = s.count(2)
-    count3 = s.count(3)
-    count4 = s.count(4)
-    if count2:
-        answer += count2 // 2
-        count2 = count2 % 2 
-    if count1:
+    count1, count2, count3, count4 = s.count(1), s.count(2), s.count(3), s.count(4)
+    if count1 and count3:
         if count1 >= count3:
             answer += count3
             count1 = count1 - count3
@@ -20,10 +14,12 @@ def idealTaxi(s):
         elif count3 > count1:
             answer += count1
             count3 = count3 - count1
-            count1 = 0
-            if count2:
-                answer += math.ceil((2 + count1) // 4)
-                count2 = 0
+            count1 = 0         
+    answer += count2 // 2
+    count2 = count2 % 2 
+    if count1 and count2:
+        answer += math.ceil((2 + count1) // 4)
+        count2 = 0
     answer += count4 + count3 + count2
     return answer
 
