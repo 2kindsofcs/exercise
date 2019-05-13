@@ -1,0 +1,17 @@
+# https://www.hackerrank.com/challenges/utopian-tree/problem
+
+def utopianTree(n):
+    cycle = 0
+    height = 1
+    while cycle < n:
+        cycle += 1  # 처음에 cycle 횟수를 while문 끝에서 증가시켜주는 바람에 테스트케이스 통과를 못했었다;;
+        if cycle % 2 == 0:
+            height += 1
+        else:
+            height = height * 2
+    return height
+
+
+testNum = int(input())
+for i in range(0, testNum):
+    print(utopianTree(int(input())))
