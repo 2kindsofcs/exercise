@@ -1,0 +1,18 @@
+# https://leetcode.com/problems/valid-parentheses/ 
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        dictionary = {'(':')', '{':'}', '[':']'}
+        length = len(s)
+        for i in range(length):
+            if s[i] in ['(', '{', '[']:
+                stack.append(s[i])
+            else:
+                if stack:
+                    top = stack.pop()
+                    if s[i] != dictionary[top]:
+                        return False
+                else:
+                    return False
+        return False if stack else True
