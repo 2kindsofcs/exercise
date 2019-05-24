@@ -2,20 +2,18 @@
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        done = False
         index = 0 
-        while not done:
+        while True: 
             try:
-                currentNum = nums[index]
-                numCount = nums.count(nums[index])
-                if numCount >= 2:
-                    for i in range(numCount-1):
-                        nums.remove(currentNum)
-                index += 1
+                if nums[index] == nums[index+1]:
+                    nums.remove(nums[index])
+                else:
+                    index += 1
             except:
                 break
         return len(nums)
+                
         
- 
-# Runtime: 1880 ms, faster than 5.01% of Python3 online submissions for Remove Duplicates from Sorted Array.
-# Memory Usage: 14.7 MB, less than 75.56% of Python3 online submissions for Remove Duplicates from Sorted Array.
+# 속도는 1880ms에서 536ms로 줄였지만 메모리가 0.2MB 늘어나서 백분위가 확 낮아졌다...
+# Runtime: 536 ms, faster than 8.95% of Python3 online submissions for Remove Duplicates from Sorted Array.
+# Memory Usage: 14.9 MB, less than 12.37% of Python3 online submissions for Remove Duplicates from Sorted Array.
