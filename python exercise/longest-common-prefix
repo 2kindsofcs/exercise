@@ -1,0 +1,31 @@
+#https://leetcode.com/problems/longest-common-prefix
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if not strs or strs.count("") >=1:
+            return ""
+        length = len(strs)
+        if length == 1 or strs.count(strs[0]) == length:
+            return strs[0]
+        # 집합의 성질을 이용해서 풀었을 경우 속도는 75.37%의 제출된 답들보다 빠르고, 87.93%의 답안보다 메모리를 적게 쓴다.  
+        # prefixSet = set()
+        # for i in range(length):
+        #     prefixSet.add(strs[i][0])
+        # if len(prefixSet) != 1:
+        #     return "" 
+        flag = False
+        index = 1
+        crit = strs[0]
+        while not flag:
+            for i in range(length):
+                if crit[:index] != strs[i][:index]:
+                    # 여기서 index가 1인지 확인하는 식으로 풀면 속도는 94.53% 빠르지만 메모리는 7.79%의 답안보다 적게 쓴다고 나온다.
+                    if index == 1:
+                        return ""
+                    flag = True
+                    break
+                else:
+                    pass
+            index += 1
+        return strs[0][:index-2]
+                
