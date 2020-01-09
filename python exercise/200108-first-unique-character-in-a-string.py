@@ -21,5 +21,4 @@ class Solution:
 # Runtime: 176 ms, faster than 16.08% of Python3 online submissions for First Unique Character in a String.
 # Memory Usage: 12.8 MB, less than 100.00% of Python3 online submissions for First Unique Character in a String.
 # 속도는 다른 사람들보다 훨씬 느린데 메모리는 훨씬 적게 사용한다.
-# 다른 사람들은 어떻게 푼 거지? 일단 솔루션을 한번 봐야겠다.
 # -1과 -2를 쓰는 게 뭔가 찝찝하다...
