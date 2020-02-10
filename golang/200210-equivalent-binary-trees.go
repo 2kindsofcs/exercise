@@ -22,6 +22,8 @@ func Walk(t *tree.Tree, ch chan int) {
 		}
 		queue = queue[1:]
 	}
+	// 닫아주지 않으면 deadlock 에러
+	close(ch) 
 }
 
 // Same determines whether the trees
@@ -32,7 +34,12 @@ func Same(t1, t2 *tree.Tree) bool {
 	go Walk(t2, ch2)
 	slice1, slice2 := make([]int, 0), make([]int, 0)
 	
-	for v1, v2 := <-ch1, <-ch2; v1 != 0 && v2 != 0; {
+	// for <Initialize>; <condition>; <increment>  라는 걸 명심하자.
+	for {
+		v1, v2 := <-ch1, <-ch2 
+		if v1 == 0 && v2 == 0 {
+			break
+		}
 		slice1 = append(slice1, v1)
 		slice2 = append(slice2, v2)
 	}
@@ -44,7 +51,6 @@ func Same(t1, t2 *tree.Tree) bool {
 	result := true
 	
 	for i:=0; i<length; i++ {
-		fmt.Println(slice1[i])
 		if slice1[i] != slice2[i] {
 			result = false
 		}
@@ -54,14 +60,6 @@ func Same(t1, t2 *tree.Tree) bool {
 }
 
 func main() {
-	//	ch := make(chan int)
-	//	go Walk(tree.New(1), ch)
-	//	for i := 0; i < 10; i++ {
-	//		v := <-ch
-	//		fmt.Println(v)
-	//	}
 	fmt.Println(Same(tree.New(1), tree.New(1)))
 	fmt.Println(Same(tree.New(1), tree.New(2)))
 }
-
-// 아무런 에러 메시지도 없이 program exited. 하고 죽어버리고 있음
